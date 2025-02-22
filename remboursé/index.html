@@ -5,174 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation</title>
     <style>
-        :root {
-    --primary-color: #36d76c;
-    --text-color: #000;
-    --background-color: #fff;
-    --input-border: #ccc;
-    --footer-bg: #1a1a1a;
-    --footer-text: #fff;
-    --link-color: #33cc66;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            user-select: none;
+        }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    user-select: none;
-}
+        #payment {
+            width: calc(100% - 40px);
+            max-width: 300px;
+            margin: 0;
+        }
 
-/* Centrage du formulaire */
-#card {
-    width: 100%;
-    max-width: 350px;
-    padding: 20px;
-    box-sizing: border-box;
-}
+        #refund {
+            width: calc(100% - 40px);
+            max-width: 300px;
+            margin: 25px 0;
+        }
 
-/* Champs de saisie avec icônes */
-.input-box {
-    position: relative;
-    margin-bottom: 15px;
-    width: 100%;
-}
+        #card {
+            padding: 0 15px;
+            margin: 0 20px;
+            max-width: 320px;
+            box-sizing: border-box;
+        }
 
-.input-box input,
-.input-box select {
-    width: 100%;
-    padding: 10px 40px 10px 15px;
-    border: 1px solid var(--input-border);
-    border-radius: 6px;
-    font-size: 14px;
-    background-color: #f9f9f9;
-    transition: border 0.3s;
-}
+        p {
+            margin: 5px 0;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
-.input-box input:focus,
-.input-box select:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            font-size: 14px;
+        }
 
-/* Icônes */
-.input-box i {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #888;
-    font-size: 16px;
-}
+        #fullname, #mmyy {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+        }
 
-/* Disposition double colonne */
-.double-input {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
+        #mmyy {
+            margin: 10px 0 0 0;
+        }
 
-.double-input .input-box {
-    width: 48%;
-}
+        #firstname, #lastname, #mm, #yy {
+            width: 48%;
+        }
 
-/* Bouton */
-#button {
-    margin-top: 10px;
-    width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    transition: background 0.3s;
-}
+        #inputfirstname, #inputlastname, #inputphonenumber, #cardnumber, #inputmm, #inputyy, #cvv {
+            box-sizing: border-box;
+        }
 
-#button:hover {
-    background-color: #2bbd5c;
-}
+        #inputcardnumber {
+            letter-spacing: 2px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #inputcvv {
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        #button {
+        margin: 20px 0 0 0;
+        padding: 22px 5px;
+        background-color: #080;
+        color: #fff;
+        border-radius: 0px;
+        box-sizing: border-box;
+        max-width: 360px;
+        text-align: center;
+        cursor: pointer;
+    }
 
 #button:active {
-    background-color: #249a4b;
+    background-color: #0a0;
 }
 
-/* Logos opérateurs */
-.operators {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-}
+        #title {
+            width: calc(100% - 40px);
+            max-width: 200px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            color: #000;
+           
+        }
 
-.operators img {
-    height: 50px;
-    object-fit: contain;
-}
+        #description {
+            width: calc(100% - 40px);
+            max-width: 250px;
+            margin: 20px 0;
+            padding: 0;
+            font-size: 12px;
+            font-weight: normal;
+            text-align: center;
+            color: #637463;
+        }
 
-/* Section remboursement sécurisé */
-.secure-payment {
-    background-color: #004d00;
+        #footer {
+    background-color: #7b7373;
     color: white;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px;
-    border-radius: 6px;
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
-}
-
-.payment-icons {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.payment-icons img {
-    height: 40px;
-    object-fit: contain;
-}
-
-/* Footer */
-#footer {
-    background-color: var(--footer-bg);
-    color: var(--footer-text);
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
     padding: 15px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
     width: 100%;
-    font-size: 14px;
 }
 
-#social, #links {
-    display: flex;
-    gap: 6px;
-    justify-content: center;
-    margin: 10px 0;
-    flex-wrap: wrap;
+#assistance {
+    margin: 0 0 10px 0;
+    width: fit-content;
+    font-size: clamp(8px, 4vw, 14px);
 }
 
 #social p, #links p {
-    color: var(--link-color);
-    cursor: pointer;
+    color: #33cc66;
+    text-decoration: none;
     font-weight: normal;
+    margin: 0 2px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#social, #links {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    width: fit-content;
 }
 
 .en {
-    color: var(--link-color);
-    font-size: 14px;
+    color: #33cc66;
+    margin: 0 0 0 8px;
+    font-size: clamp(10px, 4vw, 14px);
 }
 
 #copyright {
+    margin-top: 15px;
     font-size: 12px;
-    margin-top: 10px;
+    font-weight: normal;
+    width: fit-content;
 }
 
 </style>
